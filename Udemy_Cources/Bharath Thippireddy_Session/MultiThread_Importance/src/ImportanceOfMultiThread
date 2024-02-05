@@ -1,0 +1,185 @@
+
+1) How to create a Thread.
+   What are different ways in which thread can be created
+	  
+	->There are two different ways in which thread can be created:
+	  
+	  1) our class will extends a Thread class and override the run method. within create a Thread class and invoke
+	     a start() method on it. 
+	     
+	  Another way to create a thread
+	 
+	  2) The second way, implement the Runnable interface, instead of extends the Thread class, Because 
+	     it uses the Capability of extending the any other java class if required, In case of extending 
+	     a Thread class we cannot extend any other class in java.
+	     If required in our other application, Because java does not support Multi-class level inheritance
+     
+     
+2) What is the key difference b/w Process v/s Thread 
+   -> * The program is execution is called as a Process.
+      * A Process are Independent
+      * Process have different address space in memory.
+   
+   -> * A Thread is subset of the process
+      * However a Thread contain a shared address space of the process.
+      * The Interthread communication is faster and easier in the interprocess communication.
+      * The context switching is also b/w threads when compare to the process
+      
+3) Can we invoke the start method twice?
+   -> No it is not possible for restart the thread multiple time, means once the thread is started is executed by the 
+      thread scheduler it completes the run() method after that thread enters the dead state.
+      If once thread executes then we got an lligalThreadStateException
+      
+4) Lifecycle of a thread?
+   -> * Each Thread has to go through the following states during its lifetime.
+      * Starting with New Thread, Here the new instance of thread will created, However the Thread is not yet alive.
+      * The Runnable Thread the Thread becomes Runnable once the start() method is called on the thread, it makes the 
+        Thread ready to run, the Thread is not yet running: as its not yet selected by the Thread scheduler. 
+      * Running Thread, when the thread scheduler selects the Thread from the Thread Pool the run() method is invoked, 
+        this method denotes the thread is running.  
+      * Waiting or Blocked, In this state the Thread alive but it is not running or it might be waiting for the other
+        Threads to finish.
+      * Dead or Terminated, This state is achieved when the execution of the run() method is complete the Thread is set
+        to be dead or terminated after this.
+        
+5) What is Thread Synchronization?
+   -> * When we have multiple Threads accessing the same object or data, there is a chance that these threads might 
+        corrupt each others data or objects, this reason Synchronization comes in.
+      * Once we mark or method using the synchronized keyword the first Thread will enters the method will attain the 
+        lock on that method as well as all the synchronized methods in that Thread class, so that no other Thread will
+        able to access those methods until the first Thread finishes its job.
+      * we can also have synchronized keyword on static methods and at a block levels as well  
+      
+6) What is a class level lock?
+   -> Every class in java as a unique lock associated with it, when a Thread executes a synchronized static method
+      which will attain the class level lock all the other Threads will have to wait access this static synchronized 
+      method and any other synchronized static methods on that class.
+      
+7) What are synchronized blocks?
+   -> * when we used synchronized keyword on a method entire method will be locked and can used only by one Thread at a
+        time. 
+      * if we know exactly which lines of code within that methods needs locking, instead of locking the entire method 
+        we can use a synchronized block instead.
+      * when we used synchronized block only those few lines of code within the block will be locked, when we do that
+        we can pass in object or an class which we want to attain the lock as well.
+        
+8) How to threads communicate each other?
+   -> Threads communicate with using wait() notify() notifyAll() methods 
+      * when the Thread invokes a wait method it gives up the lock on a particular object and an other Thread can take over 
+        that lock and do its works, once the other Threads can finishes the work, it will use the notify() to notify the 
+        other Thread which can gave up the lock that it finish the work and it can continue doing its job.
+      * Also use a notifyAll() method there are multiple threads waiting for that lock and gave up the lock for this Thread 
+      * To use this wait() notify() notifyAll() methods the Threads should be in a synchronized context, weather in a
+        synchronized block or a synchronized method otherwise IIligalMonitorStateException will be thrown.
+        
+9) what does the join() method do?
+   -> The join() method causes the current running thread to pause its execution until the Thread joins completes its 
+      task.
+      There are three different variations in join() method 
+      * Does't take any parameter. This method will put the current running Thread in wait mode until the Thread on which 
+        the method is called dead. In case if the Thread is interrupted then it will throw a interruptedException
+      * join(long milliseconds) it takes join the milliseconds this method will wait for the given number of milliseconds 
+        instead of waiting for the other Thread to finish wait for certain amount of time the start working again or 
+        it will come out of the wait mode.
+      * join(long milliseconds, int nanoseconds) we can tell the amount of time to wait both in milliseconds and
+        nanoseconds
+        
+10) What is the use of wait() method?
+    -> The object class as a wait() method which is used for interthread communication, The method is used to pause
+       the current Thread and it will wait until and other Thread calls the notify() or notifyAll() methods	
+       
+11) What is a Shutdown Hook?
+    -> The Shutdown Hook is a Thread that is invoked implicitly before the JVM shutsdown, one can use it to perform 
+       cleaning up of the resources to save the state of the JVM when its shutsdown either normally or abrobly.
+       
+12) What is a Deamon Thread?
+    -> A Deamon Thread is low prority Thread, it provides the backgrounds of support and services to the user threads
+       weather we check using isDeamon() method. 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

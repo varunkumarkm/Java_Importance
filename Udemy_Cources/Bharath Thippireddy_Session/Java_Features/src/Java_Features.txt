@@ -1,0 +1,473 @@
+1) Java 8 features?
+   1) What are java 8 features
+      -> * Lamda Expression
+         * Function Interface
+         * Default Methods
+         * Predicates
+         * Functions
+         * Stream API
+         * Optional class
+         
+   2) What are lamda expressions and why use them?
+      -> * Lamda expression bring functional programming syntax to java, there are anonymous function or closure where
+           we no need to use a function name, return type, or even access modifier.
+           ex1: Functional programming:          anonymous function or closure:               
+                -----------------------          ------------------------------
+               public void display() {          ()-> System.out.println("Bharath");
+               System.out.println("Bharath");
+               }
+           ex2: we can pass the parameter like this:
+                public void multiply(int a, int b) {          (int a, int b)-> System.out.println(a*b);
+                System.out.println(a*b);
+               }
+         * What typically needs of a lot of lines of code can be easily achieved through a lamda expressions.
+         
+         Advantages:
+         * Less code
+         * Easy to implement anonumous inner classes.
+         * pass parameters to methods.
+         
+   3) What are Functional Interfaces?
+      -> * If an interface an only one abstract method then that interface is called as a functional interface.
+           Ex: interface MyInterface {
+                void myMethod();
+                }
+           Example of inbuilt functional interface are:
+           Runnable -> which has been the run()
+           Comparator -> which has been one abstract method is compareTo()
+         * A Functional interface can have any number of default methods that were introduced in java 8 one abstract
+           method.
+         * we can mark Functional interface using the @FunctionalInterface
+           Ex: @FunctionalInterface
+               interface MyInterface {
+                void myMethod();
+                }
+           once we use this annotation on an interface try to add more than one abstract method in an interface it will
+           compile time error.
+         * Functional interface can be expressed as a lamda expression, that is a rule.
+   
+   4) What is a Java_8_features_Predicate?
+      -> A Java_8_features_Predicate is a function with a single argument that returns a boolean true or false back.
+         Ex: interface Java_8_features_Predicate<T> {
+              public boolean test(T t);
+             } 
+      What are Java_8_features_Predicate joins?
+      -> and()  or()  negate()   joins
+         Java_8_features_Predicate joins allows us to more than one predicate
+         
+   5) What is a Function?
+      -> Function is just like a predicate accecpt for it can return any type of value not just a boolean value.
+         we can pass a parameter what type of data and return as well.
+         It has an only one method called apply() 
+         
+   6) What are default methods in an interface and why do we need them?
+      -> Default interfaces were introduced do not break the classes in the application when the interfaces 
+         change or new abstract methods get added to the interface other classes do not want to use those new methods 
+         they can go with default behaviour.
+         
+   7) Can a class implements a two interface with a same default?
+      ->  In Java, a class can implement multiple interfaces, even if those interfaces declare methods with the same
+          default implementation. However, if a class implements two interfaces with conflicting default methods 
+          (i.e., methods with the same signature and same parameter types), a compilation error will occur, and the 
+          class must provide its own implementation to resolve the conflict.
+      
+2) Java 9 features
+   1) Can we define the private methods to the interface?
+      -> yes, Starting java 9 we can have private methods on interfaces the advantage of is reuse the code accross 
+         the default methods and static methods we can have an interfaces.
+         
+   2) How can we create a unmodifyable or immutable collections in java?
+      -> We have the of() method like every collection like list, set etc which will give us a immutable or unmodfyable
+         collection 
+    
+   3) stream API updates?
+      -> There are 3 methods will updated on streamAPI are:
+         1) takeWhile() - It will take the elements from the stream as long as the predicate method returns true, 
+                          It will stop as soon as the predicate fails or returns false, it will not take the rest of
+                          the elements from the stream.  
+         2) dropWhile() - It is the opposite keep droping the elements as long as the predicate returns true. and when
+                          it returns false it will take all those elements.   
+         4) ofNullable() - which we can used to ignore the null values while using methods like flatmap.
+         
+   4) try with resource block was a featured that was introduced back in java 6
+      -> if we define any resource within the try block automatically that resource will be closed.
+         Introduced the java 9 we don't want to define the resource inside try block 
+         
+3) Java 10 features
+    * Starting java 10 oracle promises a 6 month relese, befor java 10 upto java 9 we have to wait for a long time
+      in between each relese and each relese use to lot of features in them.
+    * Java 10 introduces 2 such cool features var and Collectors
+      1) var - To define the variable.
+         * A variable with type of var cannot static or non static, it can only be local variable and must initialized.
+         * A variable with var type can store any king of value in it.
+         * var is not a keyword in java, hence the variable names in java can be var.
+         * var is grate use when we defines complex collections, also use in loops etc. 
+         * We cannot define a var on lamda expression
+         
+      2) Collectors - Some API updates from the Collectors API.
+         -> While we using the stream Api, when we using the filters methods etc and create new Collections 
+            from existing collections how to create a unmodifyable list or set as a result of the collect method?
+            -> To do it in java 10, we have a Collectors method using 
+               Collectors.toUnmodifiableList()
+               Collectors.toUnmodifiableSet()
+               Collectors.toUnmodifiableMap() etc. 
+               These are new Api methods that are included by the java 10.
+               
+4) Java 11 features
+    * Java 11 adds a new methods to the String API, 
+    * it also adds the new API to the File io packages   
+    * added isEmpty method on optional class 
+    * Deprecations and removals   
+    
+    1) What are the new API methods that are added to the String class in the java 11.
+       String API Updates
+       * isBlank() - it will used to check for blanks within a given String. it will given true is any enpty String 
+                     is not any value in the String it given false.
+       * lines() - it takes Strings which as new line and it will return as a stream. By spliting the String based on the 
+                   new lines.
+       * strip() - Clean up the unique code spaces for start to end using this method.  
+       * stripLeading()
+       * stripTrailing()       
+         These two methods we have to specfically clean the spaces using this two methods.
+       * repeat() - This will repeat the given String as many number of times as we want. 
+       
+    2) File API Updates:
+       -> Java 11 also makes it easy to write text or String data to a file.
+       
+    3) isEmpty method:
+       -> This method is very useful, when we work with reactive programming.
+       
+5) Java 12 features:
+   -> 1) String API Updates 
+	     -> Java 12 is introduces indent() and transform() methods
+	      1) indent() - It is used for indenting the String 
+	      2) transform() - This method is takes a function it will apply the function on the given String
+	                       the return type of function need not to be a String it can return any other datatype.
+	   
+	  2) Compact Number fromat
+	     -> Starting java 12 the NumberFormat class as a getCompactNumberInstance() which can used for formatting
+	        numbers express them in a shortcut format 
+	        Ex: 1000 represents as 1K
+	        we can also passed it in style
+	    
+	  3) unicode characters      
+	     Java 12 add supports for several new unicode characters to represent the characters in the chaines language 
+	     and also the support for representing all those characters on a chess board.
+	     
+	  4) Collectors API updates:
+	     java 12 add a teeing() method to the Collectors class which takes two down streams and merges their results
+	     using the merger we provide 
+	                          
+6) Java 13 and 14 features:
+   -> 1)What is instanceOf pattern matching
+        * This feature is added on java 14, instanceOf pattern matching is still a preview feature it is not a 
+          parmanent feature yet, but it is very powerful.
+        * When we try to typeCast an Object type from a genric Object type to a particular type when we do that type casting
+          we will first check if the instanceOf type of the particular type which we are typeCasting an then we will do the
+          typeCasting once that condition is true.
+          
+      2) What is the Record feature
+         -> Introduced on java 14, 
+            Records is still a preview feature, This help us avoiding creating huge classes with all the setters
+            and getters method, constructors, toString etc. we simply defining a record and its properties 
+            we get all those methods for free.
+            
+      3) What are helpful of NullPointerException
+         -> When a NullPointerException is thrown it is very hard to figure out where exactly in the code it as
+            happened and why it has happened 
+            But java 14 use us a super cool feature, where we can know, where exactly the NullPointerException is
+            happened and why it is happened.
+            
+      4) What are the switch Expression?
+         -> It introduced on java 12 and added some features the it introduced on java 13 and 14, 
+            * switch Expressions allows us to assign a switch statement to a variable 
+            
+17) Java 15 features
+    1) What are Sealed classes and interfaces?
+       -> it is a preview feature that was introduced in java 15, using which we can control which classes can
+          implemented a particular interface and which classes can extend a particular class, we do that using the 
+          sealed keyword, first we sealed the interface or the class and then we use the permits keywords to
+          specify those classes which can implement that interface or it is a class that can extend that class 
+          
+    2) Record preview feature?
+       -> We can use the sealed interfaces and classes with the record feature as well, when we defined a record 
+          we can implement a sealed interface or extend a sealed class or also we can use custom annotations on 
+          fields that are defined within a record 
+                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+           

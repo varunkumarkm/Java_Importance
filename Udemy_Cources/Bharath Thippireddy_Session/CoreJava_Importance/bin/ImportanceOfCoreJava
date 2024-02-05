@@ -1,0 +1,9 @@
+ Core Java Importance
+ 
+1) What is the differance between abstract class and interface?
+abstract class:
+   -> * If a class have an atleast one abstract method then that class needs to be an abstract class, if not class
+        was not compile.
+      * Any class extends a abstract class should then provide the implemenatation for those abstract method in a 
+        abstract class, if not that class also be marked as a abstract class.
+      * A abstract class have a any nuber of methods with implementation 
